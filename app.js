@@ -1,33 +1,37 @@
-//Przycisk - po kliknięciu dodana jest litera do tekstu
-
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: ""
-        }
-}
-    //state = {
-     //   text: ""
-   // }
+    //constructor(props) {
+    //    super(props);
+     //   this.state = {
+     //       text: ""
+     //   }
+
+    state = {
+        text: ""
+   }
 
     handleClick() {
        // console.log(this)
-        const letter = "a"
+        const number = Math.floor(Math.random() *10)
         this.setState({
-            text: this.state.text +letter
+            text: this.state.text +number
         })
     }
 
     render() {
         return (
             <>
-                <button onClick={this.handleClick.bind(this)}>Dodaj A</button>
-                <h1>{this.state.text}</h1>
+                <button onClick={this.handleClick.bind(this)}>{this.props.btnTitle}</button>
+                <PanelResult text={this.state.text}>Score</PanelResult> 
             </>
         )
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"))
+const PanelResult = (props) => {
+    return (
+        <h1>{props.text}: {props.children}</h1>
+    )
+}
+
+ReactDOM.render(<App btnTitle="dodaj cyfrę" />, document.getElementById("root"))
 
