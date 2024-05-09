@@ -1,12 +1,18 @@
 //Przycisk - po kliknięciu dodana jest litera do tekstu
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: ""
+        }
+}
+    //state = {
+     //   text: ""
+   // }
 
-    state = {
-        text: ""
-    }
-
-    handleClick = () => {
+    handleClick() {
+       // console.log(this)
         const letter = "a"
         this.setState({
             text: this.state.text +letter
@@ -16,7 +22,7 @@ class App extends React.Component {
     render() {
         return (
             <>
-                <button onClick={this.handleClick}>Dodaj A</button>
+                <button onClick={this.handleClick.bind(this)}>Dodaj A</button>
                 <h1>{this.state.text}</h1>
             </>
         )
